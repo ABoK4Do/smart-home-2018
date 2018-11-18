@@ -26,6 +26,18 @@ public class Room {
     }
 
     public Light getLightById(String objectId) {
+        for (Light light : lights) {
+            if (light.getId().equals(objectId))
+                return light;
+        }
+        return null;
+    }
+
+    public Door getDoorById(String objectId) {
+        for (Door door : doors) {
+            if (door.getId().equals(objectId))
+                return door;
+        }
         return null;
     }
 }
