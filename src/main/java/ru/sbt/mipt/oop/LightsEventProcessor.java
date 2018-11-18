@@ -10,13 +10,16 @@ public class LightsEventProcessor implements EventProcessor {
         for (Room room : smartHome.getRooms()) {
             Light light = room.getLightById(event.getObjectId());
             if (event.getType() == LIGHT_ON) {
-                light.setOn(true);
-                System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned on.");
+                changeLightState(room, light, true, " was turned on.");
             } else {
-                light.setOn(false);
-                System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned off.");
+                changeLightState(room, light, false, " was turned off.");
             }
         }
+    }
+
+    private void changeLightState(Room room, Light light, boolean state, String text) {
+        light.setOn(state);
+        System.out.println("Light " + light.getId() + " in room " + room.getName() + text);
     }
 
     private boolean isLightEvent(SensorEvent event) {

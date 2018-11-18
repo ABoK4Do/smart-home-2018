@@ -1,6 +1,6 @@
 package ru.sbt.mipt.oop;
 
-import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSED;
+import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSE;
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_OPEN;
 
 public class DoorEventProcessor implements EventProcessor {
@@ -23,12 +23,12 @@ public class DoorEventProcessor implements EventProcessor {
     }
 
 
-    private void changeDoorState(Room room, Door door, boolean opened, String s) {
+    private void changeDoorState(Room room, Door door, boolean opened, String text) {
         door.setOpen(opened);
-        System.out.println("Door " + door.getId() + " in room " + room.getName() + s);
+        System.out.println("Door " + door.getId() + " in room " + room.getName() + text);
     }
 
     private boolean isDoorEvent(SensorEvent event) {
-        return event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED;
+        return event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSE;
     }
 }

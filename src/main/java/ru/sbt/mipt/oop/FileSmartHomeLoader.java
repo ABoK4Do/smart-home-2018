@@ -7,21 +7,15 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class FileSmartHomeLoader implements SmartHomeLoader {
-    private String fileName;
-
-    FileSmartHomeLoader() {
-        fileName = "smart-home-1.js";
-    }
-
-    FileSmartHomeLoader(String fileName) {
-        this.fileName = fileName;
-    }
-
     @Override
     public SmartHome loadSmartHome() throws IOException {
+        return loadSmartHome("smart-home-1.json");
+    }
+
+    public SmartHome loadSmartHome(String path) throws IOException {
         // считываем состояние дома из файла
         Gson gson = new Gson();
-        String json = new String(Files.readAllBytes(Paths.get(fileName)));
+        String json = new String(Files.readAllBytes(Paths.get(path)));
         return gson.fromJson(json, SmartHome.class);
     }
 }
