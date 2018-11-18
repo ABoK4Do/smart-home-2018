@@ -6,6 +6,12 @@ import java.util.Arrays;
 public class HomeBuilder {
 
     public static void main(String[] args) throws IOException {
+        SmartHome smartHome = createSmartHome();
+        SmartHomeSaver smartHomeSaver = new FileSmartHomeSaver();
+        smartHomeSaver.saveSmartHome(smartHome);
+    }
+
+    public static SmartHome createSmartHome() {
         Room kitchen = new Room(Arrays.asList(new Light("1", false), new Light("2", true)),
                 Arrays.asList(new Door(false, "1")),
                 "kitchen");
@@ -18,8 +24,7 @@ public class HomeBuilder {
         Room hall = new Room(Arrays.asList(new Light("7", false), new Light("8", false), new Light("9", false)),
                 Arrays.asList(new Door(false, "4")),
                 "hall");
-        SmartHome smartHome = new SmartHome(Arrays.asList(kitchen, bathroom, bedroom, hall));
-        SmartHomeSaver smartHomeSaver = new FileSmartHomeSaver();
+        return new SmartHome(Arrays.asList(kitchen, bathroom, bedroom, hall));
     }
 
 }

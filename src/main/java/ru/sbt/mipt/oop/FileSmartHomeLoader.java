@@ -12,6 +12,7 @@ public class FileSmartHomeLoader implements SmartHomeLoader {
         return loadSmartHome("smart-home-1.json");
     }
 
+    @Override
     public SmartHome loadSmartHome(String path) throws IOException {
         // считываем состояние дома из файла
         Gson gson = new Gson();

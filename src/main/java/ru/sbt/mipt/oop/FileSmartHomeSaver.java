@@ -15,6 +15,7 @@ public class FileSmartHomeSaver implements SmartHomeSaver {
         saveSmartHome(smartHome, "output.json");
     }
 
+    @Override
     public void saveSmartHome(SmartHome smartHome, String path) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonString = gson.toJson(smartHome);
