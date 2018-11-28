@@ -1,45 +1,79 @@
 package ru.sbt.mipt.oop;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static org.junit.Assert.assertFalse;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertTrue;
 
 public class DoorEventProcessorTest {
-    @Test
-    public void processEventTest_notDoorEvent() {
-        SensorEvent event = mock(SensorEvent.class);
-        when(event.getType()).thenReturn(SensorEventType.LIGHT_OFF);
-        SmartHome smartHome = mock(SmartHome.class);
-        new DoorEventProcessor().processEvent(smartHome, event);
-        //Check that isDoorEvent called getType() twice
-        verify(event, times(2)).getType();
-    }
+    private SensorEvent event;
+    private SmartHome smartHome;
 
-    @Test
-    public void processEventTest_ok() throws NoSuchFieldException, IllegalAccessException {
-        SensorEvent event = mock(SensorEvent.class);
-        when(event.getType()).thenReturn(SensorEventType.DOOR_CLOSE);
-        when(event.getObjectId()).thenReturn("1");
-        SmartHome smartHome = mock(SmartHome.class);
+    @Before
+    public void init() {
         List<Door> doors = new ArrayList<>();
         doors.add(new Door(true, "1"));
         doors.add(new Door(false, "2"));
         List<Room> rooms = new ArrayList<>();
         rooms.add(new Room(null, doors, "hall"));
-        rooms.add(new Room(null, doors, "bath"));
-        when(smartHome.getRooms()).thenReturn(rooms);
+        smartHome = new SmartHome(rooms);
+    }
+
+    @Test
+    public void processEventTest_openOpenedDoor() throws NoSuchFieldException, IllegalAccessException {
+        event = new SensorEvent(SensorEventType.DOOR_OPEN, "1");
         new DoorEventProcessor().processEvent(smartHome, event);
-        //Check that doors with id=1 are closed
-        Door door1 = rooms.get(0).getDoorById("1");
-        Door door2 = rooms.get(1).getDoorById("1");
-        Field isOpen = Door.class.getDeclaredField("isOpen");
-        isOpen.setAccessible(true);
-        assertFalse(isOpen.getBoolean(door1));
-        assertFalse(isOpen.getBoolean(door2));
+        Collection<Room> rooms = smartHome.getRooms();
+        for(Room room: rooms){
+            Door door = room.getDoorById("1");
+            Field isOpen = Door.class.getDeclaredField("isOpen");
+            isOpen.setAccessible(true);
+            assertTrue(isOpen.getBoolean(door));
+        }
+    }
+
+    @Test
+    public void processEventTest_openClosedDoor() throws NoSuchFieldException, IllegalAccessException {
+        event = new SensorEvent(SensorEventType.DOOR_OPEN, "2");
+        new DoorEventProcessor().processEvent(smartHome, event);
+        Collection<Room> rooms = smartHome.getRooms();
+        for(Room room: rooms){
+            Door door = room.getDoorById("2");
+            Field isOpen = Door.class.getDeclaredField("isOpen");
+            isOpen.setAccessible(true);
+            assertTrue(isOpen.getBoolean(door));
+        }
+    }
+
+    @Test
+    public void processEventTest_closeClosedDoor() throws IllegalAccessException, NoSuchFieldException {
+        event = new SensorEvent(SensorEventType.DOOR_CLOSE, "2");
+        new DoorEventProcessor().processEvent(smartHome, event);
+        Collection<Room> rooms = smartHome.getRooms();
+        for(Room room: rooms){
+            Door door = room.getDoorById("2");
+            Field isOpen = Door.class.getDeclaredField("isOpen");
+            isOpen.setAccessible(true);
+            assertFalse(isOpen.getBoolean(door));
+        }
+    }
+
+    @Test
+    public void processEventTest_closeOpenedDoor() throws NoSuchFieldException, IllegalAccessException {
+        event = new SensorEvent(SensorEventType.DOOR_CLOSE, "1");
+        new DoorEventProcessor().processEvent(smartHome, event);
+        Collection<Room> rooms = smartHome.getRooms();
+        for(Room room: rooms){
+            Door door = room.getDoorById("1");
+            Field isOpen = Door.class.getDeclaredField("isOpen");
+            isOpen.setAccessible(true);
+            assertFalse(isOpen.getBoolean(door));
+        }
     }
 }

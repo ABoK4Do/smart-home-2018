@@ -1,42 +1,71 @@
 package ru.sbt.mipt.oop;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static org.junit.Assert.assertFalse;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertTrue;
 
 public class LightEventProcessorTest {
+    private SensorEvent event;
+    private SmartHome smartHome;
+
+    @Before
+    public void init() {
+        List<Light> lights = new ArrayList<>();
+        lights.add(new Light(true, "1"));
+        lights.add(new Light(false, "2"));
+        List<Room> rooms = new ArrayList<>();
+        rooms.add(new Room(lights, null, "hall"));
+        smartHome = new SmartHome(rooms);
+    }
+
+
     @Test
-    public void processEventTest_notDoorEvent() {
-        SensorEvent event = mock(SensorEvent.class);
-        when(event.getType()).thenReturn(SensorEventType.DOOR_CLOSE);
-        SmartHome smartHome = mock(SmartHome.class);
+    public void processEventTest_switchOnOnLight() {
+        event = new SensorEvent(SensorEventType.LIGHT_ON, "1");
         new LightsEventProcessor().processEvent(smartHome, event);
-        //Check that isLightEvent called getType() twice
-        verify(event, times(2)).getType();
+        Collection<Room> rooms = smartHome.getRooms();
+        for (Room room : rooms) {
+            Light light = room.getLightById("1");
+            assertTrue(light.isOn());
+        }
     }
 
     @Test
-    public void processEventTest_ok() throws NoSuchFieldException, IllegalAccessException {
-        SensorEvent event = mock(SensorEvent.class);
-        when(event.getType()).thenReturn(SensorEventType.LIGHT_OFF);
-        when(event.getObjectId()).thenReturn("1");
-        SmartHome smartHome = mock(SmartHome.class);
-        List<Light> lights = new ArrayList<>();
-        lights.add(new Light( "1", true));
-        lights.add(new Light("2", false));
-        List<Room> rooms = new ArrayList<>();
-        rooms.add(new Room(lights, null, "hall"));
-        rooms.add(new Room(lights, null, "bath"));
-        when(smartHome.getRooms()).thenReturn(rooms);
+    public void processEventTest_switchOnOffLight() {
+        event = new SensorEvent(SensorEventType.LIGHT_ON, "2");
         new LightsEventProcessor().processEvent(smartHome, event);
-        //Check that doors with id=1 are closed
-        Light light1 = rooms.get(0).getLightById("1");
-        Light light2 = rooms.get(1).getLightById("1");
-        assertFalse(light1.isOn());
-        assertFalse(light2.isOn());
+        Collection<Room> rooms = smartHome.getRooms();
+        for (Room room : rooms) {
+            Light light = room.getLightById("2");
+            assertTrue(light.isOn());
+        }
+    }
+
+    @Test
+    public void processEventTest_switchOffOffLight() {
+        event = new SensorEvent(SensorEventType.LIGHT_OFF, "2");
+        new LightsEventProcessor().processEvent(smartHome, event);
+        Collection<Room> rooms = smartHome.getRooms();
+        for (Room room : rooms) {
+            Light light = room.getLightById("2");
+            assertFalse(light.isOn());
+        }
+    }
+
+    @Test
+    public void processEventTest_switchOffOnLight() {
+        event = new SensorEvent(SensorEventType.LIGHT_OFF, "1");
+        new LightsEventProcessor().processEvent(smartHome, event);
+        Collection<Room> rooms = smartHome.getRooms();
+        for (Room room : rooms) {
+            Light light = room.getLightById("1");
+            assertFalse(light.isOn());
+        }
     }
 }

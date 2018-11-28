@@ -8,30 +8,34 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 
 public class HallDoorEventProcessorTest {
-    @Test
-    public void processEventTest_notDoorEvent() {
-        SensorEvent event = mock(SensorEvent.class);
-        when(event.getType()).thenReturn(SensorEventType.LIGHT_OFF);
-        SmartHome smartHome = mock(SmartHome.class);
-        new HallDoorEventProcessor().processEvent(smartHome, event);
-        verify(event).getType();
-    }
+    private SensorEvent event;
+    private SmartHome smartHome;
 
-    @Test
-    public void processEventTest_hallAndNotHall() {
-        SensorEvent event = mock(SensorEvent.class);
-        when(event.getType()).thenReturn(SensorEventType.LIGHT_ON);
-        when(event.getObjectId()).thenReturn("1");
-        SmartHome smartHome = mock(SmartHome.class);
+    public void init(String roomName1, String roomName2){
         List<Door> doors = new ArrayList<>();
         doors.add(new Door(true, "1"));
         doors.add(new Door(false, "2"));
         List<Room> rooms = new ArrayList<>();
-        rooms.add(new Room(null, doors, "hall"));
-        rooms.add(new Room(null, doors, "bath"));
+        rooms.add(new Room(null, doors, roomName1));
+        rooms.add(new Room(null, doors, roomName2));
+        smartHome = mock(SmartHome.class);
         when(smartHome.getRooms()).thenReturn(rooms);
         doNothing().when(smartHome).turnOffLights();
+        event = new SensorEvent(SensorEventType.DOOR_CLOSE, "1");
+    }
+
+    @Test
+    public void processEventTest_notHall() {
+        init("kitchen", "bath");
+        new HallDoorEventProcessor().processEvent(smartHome, event);
+        verify(smartHome, times(0)).turnOffLights();
+    }
+
+    @Test
+    public void processEventTest_hall() {
+        init("kitchen", "hall");
         new HallDoorEventProcessor().processEvent(smartHome, event);
         verify(smartHome, times(1)).turnOffLights();
     }
+
 }
