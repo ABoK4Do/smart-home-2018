@@ -17,6 +17,10 @@ public class Door implements Actionable {
         isOpen = open;
     }
 
+    public boolean isOpen() {
+        return isOpen;
+    }
+
     @Override
     public void executeAction(Action action) {
         action.execute(this);

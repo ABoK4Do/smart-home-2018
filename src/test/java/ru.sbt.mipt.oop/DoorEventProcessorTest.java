@@ -3,7 +3,6 @@ package ru.sbt.mipt.oop;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -30,11 +29,9 @@ public class DoorEventProcessorTest {
         event = new SensorEvent(SensorEventType.DOOR_OPEN, "1");
         new DoorEventProcessor().processEvent(smartHome, event);
         Collection<Room> rooms = smartHome.getRooms();
-        for(Room room: rooms){
+        for (Room room : rooms) {
             Door door = room.getDoorById("1");
-            Field isOpen = Door.class.getDeclaredField("isOpen");
-            isOpen.setAccessible(true);
-            assertTrue(isOpen.getBoolean(door));
+            assertTrue(door.isOpen());
         }
     }
 
@@ -43,11 +40,9 @@ public class DoorEventProcessorTest {
         event = new SensorEvent(SensorEventType.DOOR_OPEN, "2");
         new DoorEventProcessor().processEvent(smartHome, event);
         Collection<Room> rooms = smartHome.getRooms();
-        for(Room room: rooms){
+        for (Room room : rooms) {
             Door door = room.getDoorById("2");
-            Field isOpen = Door.class.getDeclaredField("isOpen");
-            isOpen.setAccessible(true);
-            assertTrue(isOpen.getBoolean(door));
+            assertTrue(door.isOpen());
         }
     }
 
@@ -56,11 +51,9 @@ public class DoorEventProcessorTest {
         event = new SensorEvent(SensorEventType.DOOR_CLOSE, "2");
         new DoorEventProcessor().processEvent(smartHome, event);
         Collection<Room> rooms = smartHome.getRooms();
-        for(Room room: rooms){
+        for (Room room : rooms) {
             Door door = room.getDoorById("2");
-            Field isOpen = Door.class.getDeclaredField("isOpen");
-            isOpen.setAccessible(true);
-            assertFalse(isOpen.getBoolean(door));
+            assertFalse(door.isOpen());
         }
     }
 
@@ -69,11 +62,9 @@ public class DoorEventProcessorTest {
         event = new SensorEvent(SensorEventType.DOOR_CLOSE, "1");
         new DoorEventProcessor().processEvent(smartHome, event);
         Collection<Room> rooms = smartHome.getRooms();
-        for(Room room: rooms){
+        for (Room room : rooms) {
             Door door = room.getDoorById("1");
-            Field isOpen = Door.class.getDeclaredField("isOpen");
-            isOpen.setAccessible(true);
-            assertFalse(isOpen.getBoolean(door));
+            assertFalse(door.isOpen());
         }
     }
 }
