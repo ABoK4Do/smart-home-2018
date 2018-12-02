@@ -1,5 +1,7 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.actions.LightOff;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -23,17 +25,12 @@ public class SmartHome implements Actionable {
     }
 
     public void turnOffLights() {
-        for (Room homeRoom : getRooms()) {
-            for (Light light : homeRoom.getLights()) {
-                light.setOn(false);
-                SensorCommand command = new SensorCommand(CommandType.LIGHT_OFF, light.getId());
-                SensorCommandExecutor.executeCommand(command);
-            }
-        }
+        this.executeAction(new LightOff());
     }
 
     @Override
     public void executeAction(Action action) {
+        action.execute(this);
         for (Room room : rooms) {
             room.executeAction(action);
         }
