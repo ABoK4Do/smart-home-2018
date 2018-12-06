@@ -3,8 +3,8 @@ package ru.sbt.mipt.oop;
 import java.util.ArrayList;
 
 public class HomeEventsObserver implements Observer {
-    ArrayList<EventProcessor> subscribers = new ArrayList<>();
-    SmartHome smartHome;
+    private ArrayList<EventProcessor> subscribers = new ArrayList<>();
+    private SmartHome smartHome;
 
     HomeEventsObserver(SmartHome smartHome) {
         this.smartHome = smartHome;
