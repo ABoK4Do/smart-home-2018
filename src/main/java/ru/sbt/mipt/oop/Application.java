@@ -17,8 +17,9 @@ public class Application {
     }
 
     private static void runEventsCycle(SmartHome smartHome) {
+        SensorEventProvider sensorEventProvider = new RandomSensorEventProvider();
         // начинаем цикл обработки событий
-        SensorEvent event = RandomSensorEventProvider.getNextSensorEvent();
+        SensorEvent event = sensorEventProvider.getNextSensorEvent();
         Collection<EventProcessor> eventProcessors = configureEventProcessors();
 
         while (event != null) {
@@ -26,7 +27,7 @@ public class Application {
             for (EventProcessor eventProcessor : eventProcessors) {
                 eventProcessor.processEvent(smartHome, event);
             }
-            event = RandomSensorEventProvider.getNextSensorEvent();
+            event = sensorEventProvider.getNextSensorEvent();
         }
     }
 
