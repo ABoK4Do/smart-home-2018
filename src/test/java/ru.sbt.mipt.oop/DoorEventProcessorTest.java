@@ -3,9 +3,7 @@ package ru.sbt.mipt.oop;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -16,16 +14,11 @@ public class DoorEventProcessorTest {
 
     @Before
     public void init() {
-        List<Door> doors = new ArrayList<>();
-        doors.add(new Door(true, "1"));
-        doors.add(new Door(false, "2"));
-        List<Room> rooms = new ArrayList<>();
-        rooms.add(new Room(null, doors, "hall"));
-        smartHome = new SmartHome(rooms);
+        smartHome = InitTestHome.init();
     }
 
     @Test
-    public void processEventTest_openOpenedDoor() throws NoSuchFieldException, IllegalAccessException {
+    public void processEventTest_openOpenedDoor() {
         event = new SensorEvent(SensorEventType.DOOR_OPEN, "1");
         new DoorEventProcessor().processEvent(smartHome, event);
         Collection<Room> rooms = smartHome.getRooms();
@@ -36,7 +29,7 @@ public class DoorEventProcessorTest {
     }
 
     @Test
-    public void processEventTest_openClosedDoor() throws NoSuchFieldException, IllegalAccessException {
+    public void processEventTest_openClosedDoor() {
         event = new SensorEvent(SensorEventType.DOOR_OPEN, "2");
         new DoorEventProcessor().processEvent(smartHome, event);
         Collection<Room> rooms = smartHome.getRooms();
@@ -47,7 +40,7 @@ public class DoorEventProcessorTest {
     }
 
     @Test
-    public void processEventTest_closeClosedDoor() throws IllegalAccessException, NoSuchFieldException {
+    public void processEventTest_closeClosedDoor() {
         event = new SensorEvent(SensorEventType.DOOR_CLOSE, "2");
         new DoorEventProcessor().processEvent(smartHome, event);
         Collection<Room> rooms = smartHome.getRooms();
@@ -58,7 +51,7 @@ public class DoorEventProcessorTest {
     }
 
     @Test
-    public void processEventTest_closeOpenedDoor() throws NoSuchFieldException, IllegalAccessException {
+    public void processEventTest_closeOpenedDoor() {
         event = new SensorEvent(SensorEventType.DOOR_CLOSE, "1");
         new DoorEventProcessor().processEvent(smartHome, event);
         Collection<Room> rooms = smartHome.getRooms();

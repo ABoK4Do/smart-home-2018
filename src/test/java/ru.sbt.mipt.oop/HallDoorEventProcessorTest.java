@@ -12,12 +12,15 @@ public class HallDoorEventProcessorTest {
     private SmartHome smartHome;
 
     public void init(String roomName1, String roomName2){
+        List<Light> lights = new ArrayList<>();
+        lights.add(new Light(true, "1"));
+        lights.add(new Light(false, "2"));
         List<Door> doors = new ArrayList<>();
         doors.add(new Door(true, "1"));
         doors.add(new Door(false, "2"));
         List<Room> rooms = new ArrayList<>();
-        rooms.add(new Room(null, doors, roomName1));
-        rooms.add(new Room(null, doors, roomName2));
+        rooms.add(new Room(lights, doors, roomName1));
+        rooms.add(new Room(lights, doors, roomName2));
         smartHome = mock(SmartHome.class);
         when(smartHome.getRooms()).thenReturn(rooms);
         doNothing().when(smartHome).turnOffLights();

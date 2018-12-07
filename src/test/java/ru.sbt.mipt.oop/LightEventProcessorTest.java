@@ -3,9 +3,7 @@ package ru.sbt.mipt.oop;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -16,12 +14,7 @@ public class LightEventProcessorTest {
 
     @Before
     public void init() {
-        List<Light> lights = new ArrayList<>();
-        lights.add(new Light(true, "1"));
-        lights.add(new Light(false, "2"));
-        List<Room> rooms = new ArrayList<>();
-        rooms.add(new Room(lights, null, "hall"));
-        smartHome = new SmartHome(rooms);
+        smartHome = InitTestHome.init();
     }
 
 
