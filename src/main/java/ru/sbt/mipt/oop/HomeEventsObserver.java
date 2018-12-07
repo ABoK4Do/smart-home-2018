@@ -1,6 +1,7 @@
 package ru.sbt.mipt.oop;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class HomeEventsObserver implements Observer {
     private ArrayList<EventProcessor> subscribers = new ArrayList<>();
@@ -8,6 +9,11 @@ public class HomeEventsObserver implements Observer {
     @Override
     public void subscribe(EventProcessor processor) {
         subscribers.add(processor);
+    }
+
+    @Override
+    public void subscribe(Collection<EventProcessor> processors) {
+        subscribers.addAll(processors);
     }
 
     @Override

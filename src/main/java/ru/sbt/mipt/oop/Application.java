@@ -10,8 +10,13 @@ public class Application {
     }
 
     public static void main(String... args) throws IOException {
+        //Load home
         SmartHome smartHome = smartHomeLoader.loadSmartHome();
-        EventManager eventManager= new RandomEventManager();
+        //Configure observer and subscribers
+        Observer observer = new HomeEventsObserver();
+        observer.subscribe(ConfigProcessors.configureEventProcessors());
+        //Start events
+        EventManager eventManager = new EventManager(observer, new RandomSensorEventProvider());
         eventManager.runEventsCycle(smartHome);
     }
 }
