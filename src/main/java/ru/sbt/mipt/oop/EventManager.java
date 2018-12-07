@@ -1,27 +1,20 @@
 package ru.sbt.mipt.oop;
 
-import java.util.Collection;
-
 public class EventManager {
+    final private Observer observer;
     final private SensorEventProvider sensorEventProvider;
 
-
-    EventManager(SensorEventProvider sensorEventProvider) {
+    EventManager(Observer observer, SensorEventProvider sensorEventProvider) {
+        this.observer = observer;
         this.sensorEventProvider = sensorEventProvider;
     }
+
     public void runEventsCycle(SmartHome smartHome) {
-        HomeEventsObserver homeEventsObserver = new HomeEventsObserver(smartHome);
         // начинаем цикл обработки событий
         SensorEvent event = sensorEventProvider.getNextSensorEvent();
-        Collection<EventProcessor> eventProcessors = ConfigProcessors.configureEventProcessors();
-        //Подписываем всех процессоров на наблюдателя
-        for (EventProcessor processor : eventProcessors) {
-            homeEventsObserver.subscribe(processor);
-        }
-
         while (event != null) {
             System.out.println("Got event: " + event);
-            homeEventsObserver.notifySubscribers(event);
+            observer.notifySubscribers(smartHome, event);
             event = sensorEventProvider.getNextSensorEvent();
         }
     }
