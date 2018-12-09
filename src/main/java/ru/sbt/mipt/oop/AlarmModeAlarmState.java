@@ -25,6 +25,6 @@ public class AlarmModeAlarmState implements AlarmState {
 
     @Override
     public void setAlarmMode() {
-        System.out.println("ALARM! Sending sms");
+        System.out.println("ALARM!");
     }
 }

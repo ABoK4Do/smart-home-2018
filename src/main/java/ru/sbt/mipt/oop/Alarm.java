@@ -7,6 +7,10 @@ public class Alarm {
         this.alarmState = new DeactivatedAlarmState(this);
     }
 
+    AlarmState getAlarmState() {
+        return alarmState;
+    }
+
     void changeAlarmState(AlarmState alarmState) {
         this.alarmState = alarmState;
     }

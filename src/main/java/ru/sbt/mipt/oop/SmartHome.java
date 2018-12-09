@@ -5,13 +5,16 @@ import java.util.Collection;
 
 public class SmartHome implements Actionable {
     private Collection<Room> rooms;
+    private Alarm alarm;
 
     public SmartHome() {
         rooms = new ArrayList<>();
+        alarm = new Alarm();
     }
 
     public SmartHome(Collection<Room> rooms) {
         this.rooms = rooms;
+        alarm = new Alarm();
     }
 
     public void addRoom(Room room) {
@@ -20,6 +23,10 @@ public class SmartHome implements Actionable {
 
     public Collection<Room> getRooms() {
         return rooms;
+    }
+
+    public Alarm getAlarm() {
+        return alarm;
     }
 
     public void turnOffLights() {
