@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.mockito.Mockito.*;
 
-public class EventManagerTest {
+public class HomeEventManagerTest {
     private Observer observer;
     private SensorEventProvider sensorEventProvider;
     private SmartHome smartHome;
@@ -28,7 +28,7 @@ public class EventManagerTest {
 
     @Test
     public void runEventsCycleTest() {
-        new EventManager(observer, sensorEventProvider).runEventsCycle(smartHome);
+        new HomeEventManager(observer, sensorEventProvider).runEventsCycle(smartHome);
         verify(observer, times(1)).notifySubscribers(any(), any());
     }
 }

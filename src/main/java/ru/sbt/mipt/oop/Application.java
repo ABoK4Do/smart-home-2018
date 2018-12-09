@@ -16,7 +16,7 @@ public class Application {
         Observer observer = new HomeEventsObserver();
         observer.subscribe(ConfigProcessors.configureEventProcessors());
         //Start events
-        EventManager eventManager = new EventManager(observer, new RandomSensorEventProvider());
+        EventManager eventManager = new HomeEventManager(observer, new RandomSensorEventProvider());
         eventManager.runEventsCycle(smartHome);
     }
 }
