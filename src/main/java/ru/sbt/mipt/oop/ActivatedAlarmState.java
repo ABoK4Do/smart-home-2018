@@ -19,7 +19,7 @@ public class ActivatedAlarmState implements AlarmState {
         if (this.password.equals(password)) {
             alarm.changeAlarmState(new DeactivatedAlarmState(alarm));
         } else {
-            alarm.changeAlarmState(new AlarmModeAlarmState(alarm, password));
+            alarm.changeAlarmState(new AlarmModeAlarmState(alarm, this.password));
             alarm.setAlarmMode();
         }
     }

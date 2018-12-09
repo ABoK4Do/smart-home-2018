@@ -6,6 +6,7 @@ public class AlarmModeAlarmState implements AlarmState {
 
     AlarmModeAlarmState(Alarm alarm, String password) {
         this.alarm = alarm;
+        this.password = password;
     }
 
     @Override
@@ -18,7 +19,7 @@ public class AlarmModeAlarmState implements AlarmState {
         if (this.password.equals(password)) {
             alarm.changeAlarmState(new DeactivatedAlarmState(alarm));
         } else {
-            alarm.changeAlarmState(new AlarmModeAlarmState(alarm, password));
+            alarm.changeAlarmState(new AlarmModeAlarmState(alarm, this.password));
             alarm.setAlarmMode();
         }
     }
