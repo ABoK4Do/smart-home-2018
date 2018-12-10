@@ -1,6 +1,10 @@
 package ru.sbt.mipt.oop;
 
 import org.junit.Test;
+import ru.sbt.mipt.oop.homeComponents.Door;
+import ru.sbt.mipt.oop.homeComponents.Light;
+import ru.sbt.mipt.oop.homeComponents.Room;
+import ru.sbt.mipt.oop.processors.HallDoorEventProcessor;
 
 import java.util.ArrayList;
 import java.util.List;

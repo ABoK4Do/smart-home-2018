@@ -1,4 +1,10 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.decorators;
+
+import ru.sbt.mipt.oop.processors.EventProcessor;
+import ru.sbt.mipt.oop.SensorEvent;
+import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.alarmStates.ActivatedAlarmState;
+import ru.sbt.mipt.oop.alarmStates.AlarmModeAlarmState;
 
 import static ru.sbt.mipt.oop.SensorEventType.ALARM_ACTIVATE;
 import static ru.sbt.mipt.oop.SensorEventType.ALARM_DEACTIVATE;

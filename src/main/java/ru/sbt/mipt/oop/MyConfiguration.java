@@ -3,6 +3,10 @@ package ru.sbt.mipt.oop;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.sbt.mipt.oop.adapter.EventManagerAdapter;
+import ru.sbt.mipt.oop.processors.DoorEventProcessor;
+import ru.sbt.mipt.oop.processors.EventProcessor;
+import ru.sbt.mipt.oop.processors.HallDoorEventProcessor;
+import ru.sbt.mipt.oop.processors.LightsEventProcessor;
 
 import java.util.ArrayList;
 import java.util.Collection;

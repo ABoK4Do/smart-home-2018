@@ -1,4 +1,7 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.homeComponents;
+
+import ru.sbt.mipt.oop.Action;
+import ru.sbt.mipt.oop.Actionable;
 
 public class Light implements Actionable {
     private boolean isOn;

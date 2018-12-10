@@ -2,6 +2,9 @@ package ru.sbt.mipt.oop;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.sbt.mipt.oop.homeComponents.Door;
+import ru.sbt.mipt.oop.homeComponents.Light;
+import ru.sbt.mipt.oop.homeComponents.Room;
 
 import java.util.ArrayList;
 import java.util.Collection;

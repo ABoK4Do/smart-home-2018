@@ -1,9 +1,11 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.alarmStates;
+
+import ru.sbt.mipt.oop.homeComponents.Alarm;
 
 public class DeactivatedAlarmState implements AlarmState {
     private Alarm alarm;
 
-    DeactivatedAlarmState(Alarm alarm) {
+    public DeactivatedAlarmState(Alarm alarm) {
         this.alarm = alarm;
     }
 
@@ -19,6 +21,7 @@ public class DeactivatedAlarmState implements AlarmState {
 
     @Override
     public void setAlarmMode() {
-
+        alarm.changeAlarmState(new AlarmModeAlarmState(alarm, "0000"));
+        alarm.setAlarmMode();
     }
 }

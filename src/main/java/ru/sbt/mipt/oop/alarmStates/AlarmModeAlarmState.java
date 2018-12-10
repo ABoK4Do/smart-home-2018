@@ -1,4 +1,6 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.alarmStates;
+
+import ru.sbt.mipt.oop.homeComponents.Alarm;
 
 public class AlarmModeAlarmState implements AlarmState {
     private Alarm alarm;

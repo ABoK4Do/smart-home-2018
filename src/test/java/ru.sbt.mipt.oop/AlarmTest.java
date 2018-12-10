@@ -2,6 +2,10 @@ package ru.sbt.mipt.oop;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.sbt.mipt.oop.alarmStates.ActivatedAlarmState;
+import ru.sbt.mipt.oop.alarmStates.AlarmModeAlarmState;
+import ru.sbt.mipt.oop.alarmStates.DeactivatedAlarmState;
+import ru.sbt.mipt.oop.homeComponents.Alarm;
 
 import static org.junit.Assert.assertTrue;
 

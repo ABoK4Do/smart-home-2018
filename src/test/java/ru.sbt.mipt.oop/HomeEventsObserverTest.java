@@ -2,6 +2,7 @@ package ru.sbt.mipt.oop;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.sbt.mipt.oop.processors.EventProcessor;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
