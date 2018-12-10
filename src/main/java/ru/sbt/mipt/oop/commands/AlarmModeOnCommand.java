@@ -2,10 +2,10 @@ package ru.sbt.mipt.oop.commands;
 
 import ru.sbt.mipt.oop.SmartHome;
 
-public class AlarmModeOn implements Command {
+public class AlarmModeOnCommand implements Command {
     final private SmartHome smartHome;
 
-    AlarmModeOn(SmartHome smartHome) {
+    AlarmModeOnCommand(SmartHome smartHome) {
         this.smartHome = smartHome;
     }
 

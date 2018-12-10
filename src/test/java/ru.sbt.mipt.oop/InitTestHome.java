@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InitTestHome {
-    static SmartHome init(String name1, String name2) {
+    public static SmartHome init(String name1, String name2) {
         List<Door> doors = new ArrayList<>();
         doors.add(new Door(true, "1"));
         doors.add(new Door(false, "2"));
@@ -21,7 +21,7 @@ public class InitTestHome {
         return new SmartHome(rooms);
     }
 
-    static SmartHome init() {
+    public static SmartHome init() {
         return init("hall", "kitchen");
     }
 }
