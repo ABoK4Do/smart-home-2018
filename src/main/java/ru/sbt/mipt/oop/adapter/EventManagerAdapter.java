@@ -3,11 +3,11 @@ package ru.sbt.mipt.oop.adapter;
 import com.coolcompany.smarthome.events.SensorEventsManager;
 import ru.sbt.mipt.oop.*;
 
-class EventManagerAdapter implements EventManager {
+public class EventManagerAdapter implements EventManager {
     final private SensorEventsManager sensorEventsManager;
     final private Observer observer;
 
-    EventManagerAdapter(Observer observer) {
+    public EventManagerAdapter(Observer observer) {
         this.observer = observer;
         sensorEventsManager = new SensorEventsManager();
     }
