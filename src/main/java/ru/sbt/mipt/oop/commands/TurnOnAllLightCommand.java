@@ -1,6 +1,6 @@
 package ru.sbt.mipt.oop.commands;
 
-import ru.sbt.mipt.oop.Light;
+import ru.sbt.mipt.oop.homeComponents.Light;
 import ru.sbt.mipt.oop.SmartHome;
 
 public class TurnOnAllLightCommand implements Command {

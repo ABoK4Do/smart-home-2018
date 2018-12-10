@@ -1,7 +1,7 @@
 package ru.sbt.mipt.oop.commands;
 
-import ru.sbt.mipt.oop.Light;
-import ru.sbt.mipt.oop.Room;
+import ru.sbt.mipt.oop.homeComponents.Light;
+import ru.sbt.mipt.oop.homeComponents.Room;
 import ru.sbt.mipt.oop.SmartHome;
 
 public class TurnOnHallLight implements Command {
