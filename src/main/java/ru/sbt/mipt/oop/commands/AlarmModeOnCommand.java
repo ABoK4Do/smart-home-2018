@@ -1,6 +1,6 @@
 package ru.sbt.mipt.oop.commands;
 
-import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
 
 public class AlarmModeOnCommand implements Command {
     final private SmartHome smartHome;

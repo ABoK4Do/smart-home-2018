@@ -1,7 +1,10 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.observer;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.sbt.mipt.oop.event.SensorEvent;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
+import ru.sbt.mipt.oop.observer.HomeEventsObserver;
 import ru.sbt.mipt.oop.processors.EventProcessor;
 
 import java.lang.reflect.Field;

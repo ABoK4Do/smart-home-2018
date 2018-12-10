@@ -1,10 +1,10 @@
 package ru.sbt.mipt.oop.processors;
 
-import ru.sbt.mipt.oop.SensorEvent;
-import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.event.SensorEvent;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
 
-import static ru.sbt.mipt.oop.SensorEventType.ALARM_ACTIVATE;
-import static ru.sbt.mipt.oop.SensorEventType.ALARM_DEACTIVATE;
+import static ru.sbt.mipt.oop.event.SensorEventType.ALARM_ACTIVATE;
+import static ru.sbt.mipt.oop.event.SensorEventType.ALARM_DEACTIVATE;
 
 public class AlarmEventProcessor implements EventProcessor {
     @Override

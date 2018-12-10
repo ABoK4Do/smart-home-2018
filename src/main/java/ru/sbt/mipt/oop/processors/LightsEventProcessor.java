@@ -1,11 +1,11 @@
 package ru.sbt.mipt.oop.processors;
 
-import ru.sbt.mipt.oop.SensorEvent;
-import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.event.SensorEvent;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
 import ru.sbt.mipt.oop.homeComponents.Light;
 
-import static ru.sbt.mipt.oop.SensorEventType.LIGHT_OFF;
-import static ru.sbt.mipt.oop.SensorEventType.LIGHT_ON;
+import static ru.sbt.mipt.oop.event.SensorEventType.LIGHT_OFF;
+import static ru.sbt.mipt.oop.event.SensorEventType.LIGHT_ON;
 
 public class LightsEventProcessor implements EventProcessor {
     public void processEvent(SmartHome smartHome, SensorEvent event) {

@@ -1,7 +1,7 @@
 package ru.sbt.mipt.oop.commands;
 
 import ru.sbt.mipt.oop.homeComponents.Light;
-import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
 
 public class TurnOffAllLightCommand implements Command {
     final private SmartHome smartHome;

@@ -1,7 +1,10 @@
 package ru.sbt.mipt.oop.adapter;
 
 import com.coolcompany.smarthome.events.SensorEventsManager;
-import ru.sbt.mipt.oop.*;
+import ru.sbt.mipt.oop.event.SensorEvent;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
+import ru.sbt.mipt.oop.observer.EventManager;
+import ru.sbt.mipt.oop.observer.Observer;
 
 public class EventManagerAdapter implements EventManager {
     final private SensorEventsManager sensorEventsManager;

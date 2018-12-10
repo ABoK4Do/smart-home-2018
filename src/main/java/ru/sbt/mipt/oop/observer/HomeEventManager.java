@@ -1,4 +1,8 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.observer;
+
+import ru.sbt.mipt.oop.event.SensorEvent;
+import ru.sbt.mipt.oop.provider.SensorEventProvider;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
 
 public class HomeEventManager implements EventManager {
     final private Observer observer;

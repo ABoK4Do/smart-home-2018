@@ -1,6 +1,7 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.loader;
 
 import com.google.gson.Gson;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,7 +10,7 @@ import java.nio.file.Paths;
 public class FileSmartHomeLoader implements SmartHomeLoader {
     final private String path;
 
-    FileSmartHomeLoader() {
+    public FileSmartHomeLoader() {
         this.path = FileSmartHomeLoader.class.getResource("/smart-home-1.json").getPath();
     }
 

@@ -3,7 +3,7 @@ package ru.sbt.mipt.oop.commands;
 import org.junit.Before;
 import org.junit.Test;
 import ru.sbt.mipt.oop.InitTestHome;
-import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
 import ru.sbt.mipt.oop.homeComponents.Light;
 import ru.sbt.mipt.oop.homeComponents.Room;
 

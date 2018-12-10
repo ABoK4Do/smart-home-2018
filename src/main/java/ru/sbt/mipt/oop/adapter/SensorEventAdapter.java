@@ -1,8 +1,8 @@
 package ru.sbt.mipt.oop.adapter;
 
 import com.coolcompany.smarthome.events.CCSensorEvent;
-import ru.sbt.mipt.oop.SensorEvent;
-import ru.sbt.mipt.oop.SensorEventType;
+import ru.sbt.mipt.oop.event.SensorEvent;
+import ru.sbt.mipt.oop.event.SensorEventType;
 
 public class SensorEventAdapter extends SensorEvent {
     public SensorEventAdapter(CCSensorEvent ccSensorEvent) {

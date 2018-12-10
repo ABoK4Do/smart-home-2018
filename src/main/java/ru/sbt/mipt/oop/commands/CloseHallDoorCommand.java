@@ -2,7 +2,7 @@ package ru.sbt.mipt.oop.commands;
 
 import ru.sbt.mipt.oop.homeComponents.Door;
 import ru.sbt.mipt.oop.homeComponents.Room;
-import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
 
 public class CloseHallDoorCommand implements Command {
     final private SmartHome smartHome;

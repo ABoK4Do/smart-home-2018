@@ -1,8 +1,13 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.sbt.mipt.oop.adapter.EventManagerAdapter;
+import ru.sbt.mipt.oop.loader.FileSmartHomeLoader;
+import ru.sbt.mipt.oop.loader.SmartHomeLoader;
+import ru.sbt.mipt.oop.observer.EventManager;
+import ru.sbt.mipt.oop.observer.HomeEventsObserver;
+import ru.sbt.mipt.oop.observer.Observer;
 import ru.sbt.mipt.oop.processors.DoorEventProcessor;
 import ru.sbt.mipt.oop.processors.EventProcessor;
 import ru.sbt.mipt.oop.processors.HallDoorEventProcessor;
@@ -12,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Configuration
-class MyConfiguration {
+public class MyConfiguration {
     MyConfiguration() {
 
     }

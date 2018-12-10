@@ -2,6 +2,9 @@ package ru.sbt.mipt.oop;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
+import ru.sbt.mipt.oop.config.MyConfiguration;
+import ru.sbt.mipt.oop.loader.SmartHomeLoader;
+import ru.sbt.mipt.oop.observer.EventManager;
 
 import java.io.IOException;
 

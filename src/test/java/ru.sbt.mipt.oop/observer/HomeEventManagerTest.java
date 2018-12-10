@@ -1,7 +1,13 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.observer;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.sbt.mipt.oop.event.SensorEvent;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
+import ru.sbt.mipt.oop.observer.HomeEventManager;
+import ru.sbt.mipt.oop.observer.HomeEventsObserver;
+import ru.sbt.mipt.oop.observer.Observer;
+import ru.sbt.mipt.oop.provider.SensorEventProvider;
 
 import static org.mockito.Mockito.*;
 

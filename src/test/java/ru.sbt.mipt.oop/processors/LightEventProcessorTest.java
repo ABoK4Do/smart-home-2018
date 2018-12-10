@@ -1,9 +1,13 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.processors;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.sbt.mipt.oop.InitTestHome;
+import ru.sbt.mipt.oop.event.SensorEvent;
+import ru.sbt.mipt.oop.event.SensorEventType;
 import ru.sbt.mipt.oop.homeComponents.Light;
 import ru.sbt.mipt.oop.homeComponents.Room;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
 import ru.sbt.mipt.oop.processors.LightsEventProcessor;
 
 import java.util.Collection;

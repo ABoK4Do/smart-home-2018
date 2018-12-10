@@ -3,6 +3,9 @@ package ru.sbt.mipt.oop;
 import ru.sbt.mipt.oop.homeComponents.Door;
 import ru.sbt.mipt.oop.homeComponents.Light;
 import ru.sbt.mipt.oop.homeComponents.Room;
+import ru.sbt.mipt.oop.homeComponents.SmartHome;
+import ru.sbt.mipt.oop.saver.FileSmartHomeSaver;
+import ru.sbt.mipt.oop.saver.SmartHomeSaver;
 
 import java.io.IOException;
 import java.util.Arrays;
