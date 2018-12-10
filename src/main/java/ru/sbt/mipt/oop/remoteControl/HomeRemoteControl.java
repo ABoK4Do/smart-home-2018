@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class HomeRemoteControl implements RemoteControl {
     final private HashMap<String, Command> buttons;
 
-    HomeRemoteControl() {
+    public HomeRemoteControl() {
         buttons = new HashMap<>();
     }
 
