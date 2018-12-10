@@ -10,7 +10,7 @@ public class FileSmartHomeLoader implements SmartHomeLoader {
     final private String path;
 
     FileSmartHomeLoader() {
-        this.path = "smart-home-1.json";
+        this.path = FileSmartHomeLoader.class.getResource("/smart-home-1.json").getPath();
     }
 
     FileSmartHomeLoader(String path) {
